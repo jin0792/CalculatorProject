@@ -12,7 +12,7 @@ public class App {
 
         while (true) {
             // 피연산자1 or 명령어 입력
-            System.out.print("숫자를 입력해주세요: ");
+            System.out.print("첫번 째 숫자를 입력해주세요: ");
             input = scanner.next();
             while (!(input.equals("exit") || Long.parseLong(input) > 0)) {
                 System.out.print("잘못된 입력입니다. 다시 입력해주세요: ");
@@ -31,11 +31,12 @@ public class App {
             operation = input.charAt(0);
 
             // 피연산자2 입력
-            System.out.print("숫자를 입력해주세요: ");
+            System.out.print("두번 째 숫자를 입력해주세요: ");
             input = scanner.next();
             while (!(input.equals("exit") || Long.parseLong(input) > 0)) {
                 System.out.print("잘못된 입력입니다. 다시 입력해주세요: ");
                 input = scanner.next();
+
             }
             if (input.equals("exit")) return;
             number2 = Long.parseLong(input);
