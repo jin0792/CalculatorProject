@@ -12,56 +12,60 @@ public class App {
 
         while (true) {
             // 피연산자1 or 명령어 입력
-            System.out.print("첫번 째 숫자를 입력해주세요: ");
+            System.out.print("첫 번째 숫자를 입력해주세요: ");
             input = scanner.next();
-            while (!(input.equals("exit") || Long.parseLong(input) > 0)) {
-                System.out.print("잘못된 입력입니다. 다시 입력해주세요: ");
-                input = scanner.next();
-            }
-            if (input.equals("exit")) return; // exit 입력시 프로그램 종료
-            number1 = Long.parseLong(input);
+            if (input.equals("exit")) return;  // exit 입력시 프로그램 종료
 
-            // 기호 입력
-            System.out.print("기호를 입력해주세요: ");
+            try {
+                number1 = Long.parseLong(input);
+                break; // 정상 입력이면 루프 종료
+            } catch (NumberFormatException e) {
+                System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
+            }
+        }
+
+        // 기호 입력
+        System.out.print("기호를 입력해주세요: ");
+        input = scanner.next();
+        while (input.isBlank() || !(input.charAt(0) == '+' || input.charAt(0) == '-' || input.charAt(0) == '/' || input.charAt(0) == '*')) {
+            System.out.print("잘못된 기호입니다. 다시 입력해주세요: ");
             input = scanner.next();
-            while (input.isBlank() || !(input.charAt(0) == '+' || input.charAt(0) == '-' || input.charAt(0) == '/' || input.charAt(0) == '*')) {
-                System.out.print("잘못된 기호입니다. 다시 입력해주세요: ");
-                input = scanner.next();
-            }
-            operation = input.charAt(0);
+        }
+        operation = input.charAt(0);
 
-            // 피연산자2 입력
-            System.out.print("두번 째 숫자를 입력해주세요: ");
+        // 피연산자2 입력
+        while (true) {
+            System.out.print("두 번째 숫자를 입력해주세요: ");
             input = scanner.next();
-            while (!(input.equals("exit") || Long.parseLong(input) > 0)) {
-                System.out.print("잘못된 입력입니다. 다시 입력해주세요: ");
-                input = scanner.next();
-
-            }
             if (input.equals("exit")) return;
-            number2 = Long.parseLong(input);
 
-            // 계산
-            switch (operation) {
-                case '+':
-                    System.out.println(number1 + number2);
-                    break;
-                case '-':
-                    System.out.println(number1 - number2);
-                    break;
-                case '/':
-                    if (number2 == 0) {
-                        System.out.print("나누기의 분모는 0이 될 수 없습니다.");
-                        break;
-                    }
-                    System.out.println(number1 / number2);
-                    break;
-                case '*':
-                    System.out.println(number1 * number2);
-                    break;
-                default:
-                    System.out.print("잘못된 연산자입니다.");
+            try {
+                number2 = Long.parseLong(input);
+                break; // 정상 입력이면 루프 종료
+            } catch (NumberFormatException e) {
+                System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
             }
+        }
+
+        // 계산
+        switch (operation) {
+
+            case '+':
+                System.out.println("결과: " + (number1 + number2));
+                break;
+            case '-':
+                System.out.println("결과: " + (number1 - number2));
+                break;
+            case '*':
+                System.out.println("결과: " + (number1 * number2));
+                break;
+            case '/':
+                if (number2 == 0) {
+                    System.out.println("나누기의 분모는 0이 될 수 없습니다.");
+                } else {
+                    System.out.println("결과: " + (number1 / number2));
+                }
+                break;
         }
     }
 }
