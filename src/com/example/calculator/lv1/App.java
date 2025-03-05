@@ -62,10 +62,9 @@ public class App {
             case '/':
                 if (number2 == 0) {
                     System.out.println("나누기의 분모는 0이 될 수 없습니다.");
-                } else {
-                    System.out.println("결과: " + (number1 / number2));
+                    break;
                 }
-                break;
+                System.out.println("결과: " + (number1 / number2));
         }
     }
 }
