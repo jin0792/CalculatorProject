@@ -20,7 +20,7 @@ public class App {
                 number1 = Long.parseLong(input);
                 break; // 정상 입력이면 루프 종료
             } catch (NumberFormatException e) {
-                System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
+                System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             }
         }
 
@@ -41,9 +41,11 @@ public class App {
 
             try {
                 number2 = Long.parseLong(input);
-                break; // 정상 입력이면 루프 종료
+                if (number2 > 0) break;
+                else System.out.println("나누기의 분모는 0이 될 수 없습니다.");
+
             } catch (NumberFormatException e) {
-                System.out.println("잘못된 입력입니다. 숫자를 입력해주세요.");
+                System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             }
         }
 
@@ -60,11 +62,8 @@ public class App {
                 System.out.println("결과: " + (number1 * number2));
                 break;
             case '/':
-                if (number2 == 0) {
-                    System.out.println("나누기의 분모는 0이 될 수 없습니다.");
-                    break;
-                }
                 System.out.println("결과: " + (number1 / number2));
+                break;
         }
     }
 }
